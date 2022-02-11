@@ -292,11 +292,11 @@ def prospect_d(
     j = kall > 0
     t1 = (1 - kall) * np.exp(-kall)
     t2 = kall ** 2 * (-expi(-kall))
-    tau = np.ones_like(t1)
+    tau = np.array([np.nan for i in t1])
     tau[j] = t1[j] + t2[j]
-
+    
     r, t, Ra, Ta, denom = refl_trans_one_layer(alpha, nr, tau)
-
+    
     # ***********************************************************************
     # reflectance and transmittance of N layers
     # Stokes equations to compute properties of next N-1 layers (N real)
